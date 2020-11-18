@@ -6,17 +6,12 @@ if(NOT DEFINED CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Choose the type of build, options are: Debug Release" FORCE)
 endif()
 
-option(FORCE_32BIT "Build 32-bit binaries on a 64-bit host" ON)
 option(USE_ASM "Use x86 assembly optimizations." OFF)
 
 if(USE_ASM)
     set(FORCE_32BIT ON)
 endif()
 
-if(FORCE_32BIT AND NOT MSVC)
-    list(APPEND CMAKE_CXX_FLAGS_INIT "-m32")
-    list(APPEND CMAKE_C_FLAGS_INIT "-m32")
-endif()
 
 project(VanillaConquer)
 
